@@ -23,3 +23,8 @@ New characters and settings for upcoming videos. Not wired into `engine/scenes.p
 - "POV: trying to explain the Q4 margins to the board" (board dinner, the Exec, the CFO with the app as the answer)
 - The Exec vs the CFO: "the CEO says we're profitable, the CFO says we're out of cash in February"
 - Wall Street vs Main Street: big-money confidence vs a small business that just needs to know its February
+
+## Added Nov 19 (owner, second batch)
+- Sam the freelancer: `sam_freelancer_portrait`, `sam_laptop_night`, `sam_lkb_lobby`
+- The client in the grey suit: `client_suit_phone`, `client_desk_lkb_capital` (LKB Capital is made up, fine to show), `client_boss_lobby` (boss-fight pose)
+- PS2 retro shops: `bakery_shop_ps2`, `baker_man_ps2`, `salon_ps2`, `salon_owner_ps2` (small, about 250 px wide: good for quick cuts)

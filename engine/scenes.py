@@ -92,7 +92,8 @@ def _to_916(path, zoom=1.0, focus=0.5):
     if os.path.exists(out): return out
     im = cv2.imread(path); h, w = im.shape[:2]; tw = int(h * 9 / 16)
     if w > h * 1.05:                                   # wide scene: keep all of it, centred on a blurred copy of itself
-        fw = int(864 * zoom); fg = cv2.resize(im, (fw, int(h * fw / w)), interpolation=cv2.INTER_LANCZOS4)
+        fill = zoom if zoom < 1.0 else 0.62                 # wide scenes fill ~62% of the height (zoom<1 sets the fraction)
+        fh = int(1536 * fill); fw = max(864, int(w * fh / h)); fg = cv2.resize(im, (fw, int(h * fw / w)), interpolation=cv2.INTER_LANCZOS4)
         x0 = int(np.clip(focus * fw - 432, 0, fw - 864)); fg = fg[:, x0:x0 + 864][:1536]
         bg = cv2.resize(cv2.GaussianBlur(cv2.resize(im, (64, 64)), (0, 0), 2), (864, 1536))
         bg = (bg * 0.5).astype(np.uint8); y0 = (1536 - fg.shape[0]) // 2; bg[y0:y0 + fg.shape[0]] = fg
