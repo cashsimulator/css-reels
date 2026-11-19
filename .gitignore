@@ -1,0 +1,4 @@
+work/
+__pycache__/
+*.pyc
+queue/*/video_clean.mp4

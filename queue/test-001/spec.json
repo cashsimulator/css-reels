@@ -1,0 +1,18 @@
+{
+ "id": "test-001",
+ "title": "Your biggest client is your biggest risk",
+ "cover_char": "owner",
+ "cover_text": ["Your best client", "could sink you"],
+ "mood_flip": "k6",
+ "segments": [
+  {"key":"k1","speaker":"cfo","text":"Your biggest client feels like safety. It's actually your biggest risk.","show":{"type":"cfo"},"gap":0.3},
+  {"key":"k2","speaker":"owner","text":"They're half my sales. They'd never leave.","show":{"type":"face","char":"owner"},"label":["famous","last words"],"label_color":"red","gap":0.25},
+  {"key":"k3","speaker":"cfo","text":"Then one day, they do.","show":{"type":"broll","scene":"client_leaves"},"gap":0.25},
+  {"key":"k4","speaker":"cfo","text":"Payroll stays the same. Rent stays the same. The money coming in drops overnight.","show":{"type":"broll","scene":"payroll"},"gap":0.3},
+  {"key":"k5","speaker":"cfo","text":"That's how a profitable business ends up below zero in a few weeks.","show":{"type":"app","screen":"weekly"},"gap":0.3},
+  {"key":"k6","speaker":"cfo","text":"Cash Scenario Simulator lets you test it. Lose your biggest client, and see the exact week it hurts, before it happens.","show":{"type":"app","screen":"danger_head"},"gap":0.3},
+  {"key":"k7","speaker":"cfo","text":"It's in private beta. DM me BETA for a code.","speed":0.97,"show":{"type":"cfo"},"gap":0.35}
+ ],
+ "caption": "\"They're half my sales. They'd never leave.\"\n\nFamous last words. When one client is most of your revenue, payroll and rent don't shrink when they walk. Your cash does.\n\nHow much of your revenue is your biggest client? 👇\n\nCash Scenario Simulator lets you test \"what if I lose my biggest client\" and shows the exact week your cash goes red. Private beta is open. DM me BETA for a code.\n\n#smallbusiness #cashflow #entrepreneur #businesstips #smallbusinessowner #founder #clientconcentration #moneytips",
+ "first_comment": "Rule of thumb plenty of owners use: if one client is over 30% of revenue, run the numbers on losing them. DM me BETA to test yours."
+}
