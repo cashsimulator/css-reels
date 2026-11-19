@@ -1,6 +1,6 @@
 # css-reels: automatic Reels for Cash Scenario Simulator
 
-This repo makes short 9:16 Reels for the Instagram account **@cashscenariosimulator** (Instagram account id `17841435392255864`, posted through the **Windsor.ai for Social Media** connector, connector `instagram`) and posts them twice a day, at **13:00 and 19:00 Africa/Casablanca time**.
+This repo makes short 9:16 Reels for the Instagram account **@cashscenariosimulator** (Instagram account id `17841435392255864`, posted through the **Windsor.ai for Social Media** connector, connector `instagram`) and posts them **on request**. Each morning the owner tells Claude (in the setup chat) how many to post, the topic(s) and the times. Claude builds every video right away, pushes them here, and creates one scheduled POST run per video at the exact time asked. No previews are sent.
 
 Every scheduled run starts in a fresh session. Clone this repo, `cd` into it, run `bash setup.sh`, then follow the section for your run type.
 
@@ -16,7 +16,7 @@ Public file links (Instagram downloads from these):
 
 ---
 
-## BUILD run (about 90 minutes before each slot)
+## BUILD (done in the setup chat when the owner asks, e.g. "post 3 tomorrow about X")
 
 Goal: one finished video for the next slot, pushed to the repo, and a preview sent to the owner.
 
@@ -28,17 +28,17 @@ Goal: one finished video for the next slot, pushed to the repo, and a preview se
 6. Write `queue/<id>/status.json`: `{"slot": "YYYY-MM-DD HH:MM", "status": "ready", "title": "..."}`
 7. Move the idea line from **Next up** to **Done** as `- <id>: <title>`.
 8. Commit and push (`git add -A && git commit -m "build <id>" && git -c push.negotiate=true push`). Do not commit `video_clean.mp4` (it is gitignored).
-9. End the run with a short message to the owner: title, slot time, the hook line, and the two links (video + cover). Say: to cancel, set `"status": "skip"` in `queue/<id>/status.json` on GitHub, or tell Claude in the setup chat.
+9. Create one scheduled task per video (run once, at the exact slot time, Africa/Casablanca) whose prompt is the POST run below for that `<id>`. No preview message.
 
 ## POST run (at each slot)
 
-1. Find the `queue/*/status.json` whose `slot` is this slot (or the oldest `ready` one whose slot has passed today). If none, or its status is not `ready`, stop and say why.
+1. Open `queue/<id>/status.json` for the id named in the task prompt. If none, or its status is not `ready`, stop and say why.
 2. Check both public links return HTTP 200 (`curl -sI`). If not, wait 2 minutes and check once more; if still not, set status `failed` with a reason, push, and tell the owner.
 3. Publish with Windsor `execute_action`: connector `instagram`, action `create_video_post`, account `17841435392255864`, params `video_url`, `cover_url`, `caption` (from spec), `share_to_feed: true`.
 4. Post the first comment with `create_comment` on the returned media id, message = `first_comment` from the spec.
 5. Update status.json: `"status": "posted"`, `"media_id"`, `"posted_at"`. Commit and push.
 6. Housekeeping: for queue folders posted more than 7 days ago, `git rm` their `video.mp4` (keep spec, cover, status). Commit and push.
-7. End with a short message: posted, title, and the two things the owner must do in the Instagram app: turn on the AI label (the voices are AI) and pin the first comment.
+7. End with one line: posted (title + time), or why not.
 
 Never post anything that is not a `ready` item from this queue. Never post twice for one slot.
 
