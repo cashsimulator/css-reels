@@ -71,6 +71,9 @@ Never post anything that is not a `ready` item from this queue. Never post twice
 
 ## Content rules (the owner's style; follow them)
 
+- Two formats: (a) CFO explainer/story (the default), (b) skit with no narrator, built like this: POV hook about a recognisable person -> the product's line said out loud -> a challenge -> a reversal line + the app screen as visual proof -> walk-off -> family/colleague reactions as the punchline -> product end card. The product is part of the story from the start.
+- New characters and settings are in assets/library (read its README). Never use real people's likeness or real company logos.
+
 - Story first, product second. Hook in the first line (a surprising claim, a quote, a POV). 25 to 40 seconds.
 - Each video has its own angle and story; do not repeat a hook or structure used under **Done**.
 - The CFO is the recurring narrator and always closes with the DM BETA line. Other characters can tell their own story.
