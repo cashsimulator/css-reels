@@ -72,6 +72,16 @@ Never post anything that is not a `ready` item from this queue. Never post twice
 - Music: the owner's track `assets/music/bed.mp3` (kept local, not in the public repo) starting at 0:35, ducked under the voice. Without it the engine falls back to the built-in beat.
 - Pace: voices run at about 1.2x (CSS_VOICE_SPEED, default 1.22) and pauses inside a line are squeezed to ~0.1 s. Gaps between segments are capped at 0.12 s. Add `"beat": true` to at most one or two segments for a deliberate 0.35 s pause (before a punchline or reveal). Do not set long gaps.
 
+## Variety (the owner's top rule)
+Every video gets a NEW cast and a NEW setting, like the competitor series: different people, a different comparison, a new arena (work, family, friends, gym, bank, date, holidays...). Do not reuse the same characters or the same b-roll set in two videos in a row. The CFO is optional (a cameo or the closing line), not the star of every video.
+- Put the video's own images in `queue/<id>/img/` and declare its people in the spec:
+  `"cast": {"lina": {"voice": "af_bella", "desc": "..."}, "rick": {"voice": "am_eric", "desc": "..."}}`
+- Talking shot: `{"type": "face", "image": "img/lina.png", "who": "lina"}` (front-facing portrait, mouth closed; the mouth is found automatically).
+- Scene shot: `{"type": "broll", "image": "img/dinner.png"}` (any image; it gets gentle breathing, light flicker and grain).
+- Cover: `"cover_char": "lina", "cover_image": "img/lina.png"`.
+- Any image size works; it is centre-cropped to 9:16.
+- Voices to rotate (Kokoro): women af_bella, af_nicole, af_sarah, af_heart, bf_emma, bf_isabella; men am_eric, am_liam, am_onyx, am_puck, am_michael (the CFO), bm_george, bm_lewis.
+
 ## Content rules (the owner's style; follow them)
 
 - Two formats: (a) CFO explainer/story (the default), (b) skit with no narrator, built like this: POV hook about a recognisable person -> the product's line said out loud -> a challenge -> a reversal line + the app screen as visual proof -> walk-off -> family/colleague reactions as the punchline -> product end card. The product is part of the story from the start.

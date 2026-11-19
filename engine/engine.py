@@ -10,7 +10,7 @@ R = f"{ROOT}/assets/chars"; V3 = os.environ.get("CSS_WORK", f"{ROOT}/work"); MOD
 W, H, FPS, SR = 1080, 1920, 30, 24000
 SHOTS = f"{ROOT}/assets/shots"
 _K = None
-BASE_SPEED = float(os.environ.get("CSS_VOICE_SPEED", "1.22"))   # ~1.2x: lively but every word clear
+BASE_SPEED = float(os.environ.get("CSS_VOICE_SPEED", "1.12"))   # ~1.2x: lively but every word clear
 
 def squeeze_pauses(a, sr, keep=0.11, thr=0.008):
     """shorten any pause inside a line (commas, full stops) to `keep` seconds, with tiny fades so it never clicks"""

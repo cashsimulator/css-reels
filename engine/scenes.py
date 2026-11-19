@@ -84,3 +84,42 @@ _AP = {}
 def app(name):
     if name not in _AP: _AP[name] = APP_SCREENS[name][1]()
     return _AP[name]
+
+# ---------- new faces and scenes per video (any image, no hand setup) ----------
+def _to_916(path):
+    """load any image, centre-crop to 9:16, save as 864x1536 png next to it; returns new path"""
+    out = os.path.splitext(path)[0] + "_916.png"
+    if os.path.exists(out): return out
+    im = cv2.imread(path); h, w = im.shape[:2]; tw = int(h * 9 / 16)
+    if tw <= w: x0 = (w - tw) // 2; im = im[:, x0:x0 + tw]
+    else: th = int(w * 16 / 9); y0 = max(0, (h - th) // 3); im = im[y0:y0 + th]
+    cv2.imwrite(out, cv2.resize(im, (864, 1536), interpolation=cv2.INTER_LANCZOS4)); return out
+
+def find_mouth(path916):
+    """mouth position on a 864x1536 portrait via face detection: centre x, ~78% down the face box"""
+    g = cv2.cvtColor(cv2.imread(path916), cv2.COLOR_BGR2GRAY)
+    det = cv2.CascadeClassifier(f"{ROOT}/assets/haar_face.xml").detectMultiScale(g, 1.1, 5, minSize=(70, 70))
+    det = [d for d in det if d[1] + d[3] / 2 < 1536 * 0.62] or list(det)
+    if not len(det): raise ValueError(f"no face found in {path916}: use it as b-roll, or pick a front-facing portrait")
+    x, y, w, h = max(det, key=lambda d: d[2])
+    return (int(x + w / 2), int(y + h * 0.78)), int(w * 0.15)
+
+_auto_faces = {}
+def face_auto(path):
+    if path not in _auto_faces:
+        p = _to_916(path); mouth, hw = find_mouth(p)
+        _auto_faces[path] = Face(p, mouth, hw, open_px=15, jaw=95)
+    return _auto_faces[path]
+
+_auto_broll = {}
+def broll_auto(path):
+    """gentle life for any still: people breathe, the brightest lights flicker, film grain. No camera moves."""
+    if path not in _auto_broll:
+        p = _to_916(path); S = BA.Scene(p)
+        S.breathe((0, 250, 432, 1500), 0.005, 0.33); S.breathe((432, 250, 864, 1500), 0.005, 0.29, 0.5)
+        g = cv2.GaussianBlur(cv2.cvtColor(cv2.imread(p), cv2.COLOR_BGR2GRAY), (0, 0), 25)
+        for i in range(2):
+            _, _, _, (x, y) = cv2.minMaxLoc(g); S.light(x, y, 120, 0.12, i + 11)
+            cv2.circle(g, (x, y), 220, 0, -1)
+        _auto_broll[path] = S
+    return _auto_broll[path]
