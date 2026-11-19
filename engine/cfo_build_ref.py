@@ -72,7 +72,7 @@ class Face:
         self.close, self.open = close_px * up, open_px * up
         self.cache = {}
     def at(self, o):
-        q = round(float(o) * 12) / 12
+        q = round(float(o) * 20) / 20
         if q not in self.cache:
             sh = np.float32(self.close * (1 - q) - self.open * q)
             self.cache[q] = cv2.remap(self.img, self.xx, self.yy + self.wmap * sh, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)

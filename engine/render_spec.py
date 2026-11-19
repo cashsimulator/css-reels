@@ -24,7 +24,7 @@ def build(spec_path):
     for s in spec["segments"]:
         v, talking, gr = vis_for(s["show"], s["speaker"])
         seg = dict(key=s["key"], voice=CHARACTERS[s["speaker"]]["voice"], text=s["text"], speed=s.get("speed", 1.0),
-                   vis=v, speaker=talking, grade=gr, gap=s.get("gap", 0.25), caption=s.get("caption", True))
+                   vis=v, speaker=talking, grade=gr, gap=s.get("gap", 0.1), beat=s.get("beat", False), caption=s.get("caption", True))
         if s.get("label"):
             seg["label"] = s["label"]; seg["label_y"] = s.get("label_y", 320); seg["label_color"] = COLORS.get(s.get("label_color", "white"), (255, 255, 255))
         segs.append(seg)

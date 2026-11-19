@@ -10,6 +10,41 @@ R = f"{ROOT}/assets/chars"; V3 = os.environ.get("CSS_WORK", f"{ROOT}/work"); MOD
 W, H, FPS, SR = 1080, 1920, 30, 24000
 SHOTS = f"{ROOT}/assets/shots"
 _K = None
+BASE_SPEED = float(os.environ.get("CSS_VOICE_SPEED", "1.22"))   # ~1.2x: lively but every word clear
+
+def squeeze_pauses(a, sr, keep=0.11, thr=0.008):
+    """shorten any pause inside a line (commas, full stops) to `keep` seconds, with tiny fades so it never clicks"""
+    hop = int(0.01 * sr); env = np.array([np.sqrt(np.mean(a[i:i + hop] ** 2)) for i in range(0, len(a), hop)])
+    quiet = env < thr; out = []; i = 0; last = 0
+    while i < len(quiet):
+        if quiet[i]:
+            j = i
+            while j < len(quiet) and quiet[j]: j += 1
+            if (j - i) * 0.01 > keep + 0.02 and i > 0 and j < len(quiet):
+                cut0 = i * hop + int(keep / 2 * sr); cut1 = j * hop - int(keep / 2 * sr)
+                seg = a[last:cut0].copy(); f = min(int(0.006 * sr), len(seg))
+                if f: seg[-f:] *= np.linspace(1, 0, f)
+                out.append(seg); last = cut1
+                nxt = a[last:last + int(0.006 * sr)]
+            i = j
+        else: i += 1
+    tail = a[last:].copy(); f = min(int(0.006 * sr), len(tail))
+    if out and f: tail[:f] *= np.linspace(0, 1, f)
+    out.append(tail); return np.concatenate(out).astype(np.float32)
+
+def mouth_curve(a, fps=30, sr=24000, lead=0.04):
+    """mouth openness per video frame. Speech band only, fast open, quick close, mouth leads the sound by ~40 ms."""
+    from scipy.signal import butter, sosfilt
+    sos = butter(4, [250, 3000], btype="band", fs=sr, output="sos"); b = sosfilt(sos, a)
+    hop = int(0.01 * sr); env = np.array([np.sqrt(np.mean(b[i:i + hop] ** 2)) for i in range(0, len(b), hop)])
+    if env.max() <= 0: return np.zeros(int(len(a) / sr * fps) + 2)
+    env = env / (np.percentile(env[env > 0], 92) + 1e-9)
+    o = np.clip((env - 0.10) / 0.75, 0, 1) ** 0.7
+    sm = np.zeros_like(o); v = 0.0                       # attack 20 ms, release 60 ms
+    for k, x in enumerate(o):
+        v += (x - v) * (0.6 if x > v else 0.18); sm[k] = v
+    n = int(len(a) / sr * fps) + 2; t = (np.arange(n) / fps + lead) * 100
+    return np.interp(t, np.arange(len(sm)), sm, right=0.0)
 
 # ---------------- voice ----------------
 def tts(name, lines):
@@ -18,11 +53,12 @@ def tts(name, lines):
     os.makedirs(f"{V3}/{name}/audio", exist_ok=True)
     for L in lines:
         p = f"{V3}/{name}/audio/{L['key']}.wav"
-        meta = p + ".txt"; sig = f"{L['voice']}|{L.get('speed', 1.0)}|{L['text']}"
+        sp = BASE_SPEED * L.get("speed", 1.0)
+        meta = p + ".txt"; sig = f"v2|{L['voice']}|{sp:.3f}|{L['text']}"
         if os.path.exists(p) and os.path.exists(meta) and open(meta).read() == sig: continue
         if _K is None: _K = Kokoro(f"{MODELS}/kokoro-v1.0.onnx", f"{MODELS}/voices-v1.0.bin")
-        s, sr = _K.create(L["text"], voice=L["voice"], speed=L.get("speed", 1.0), lang="en-us")
-        i = np.where(np.abs(s) > 0.012)[0]; pd = int(0.04 * sr); s = s[max(0, i[0] - pd):i[-1] + pd]
+        s, sr = _K.create(L["text"], voice=L["voice"], speed=sp, lang="en-us")
+        i = np.where(np.abs(s) > 0.012)[0]; pd = int(0.03 * sr); s = squeeze_pauses(s[max(0, i[0] - pd):i[-1] + pd], sr)
         sf.write(p, s, sr); open(meta, "w").write(sig)
     return {L["key"]: sf.read(f"{V3}/{name}/audio/{L['key']}.wav")[0].astype(np.float32) for L in lines}
 
@@ -45,7 +81,7 @@ class Face:
         self.wmap = (wx * wy).astype(np.float32); self.open = open_px * s
         self.mx, self.my, self.hw = mx, my, hw; self.cache = {}
     def at(self, o):
-        q = round(float(o) * 10) / 10
+        q = round(float(o) * 20) / 20
         if q not in self.cache:
             sh = np.float32(-self.open * q)
             f = cv2.remap(self.img, _xx, _yy + self.wmap * sh, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)
@@ -255,15 +291,13 @@ class Reel:
         self.A = tts(name, segs)
         t = 0.05; self.T = {}
         for s in segs:
-            self.T[s["key"]] = t; t += len(self.A[s["key"]]) / SR + s.get("gap", 0.25)
+            s["gap"] = 0.35 if s.get("beat") else min(s.get("gap", 0.1), 0.12)
+            self.T[s["key"]] = t; t += len(self.A[s["key"]]) / SR + s["gap"]
         self.END = t; self.TOTAL = t + tail; self.N = int(round(self.TOTAL * FPS))
         self.mood_flip = self.T[mood_flip] if mood_flip else None
         self.open = {}
         for s in segs:                                    # mouth openness per talking segment
-            a = self.A[s["key"]]; n = int(len(a) / SR * FPS) + 2
-            e = np.array([np.sqrt(np.mean(a[int(i / FPS * SR):int((i + 1) / FPS * SR)] ** 2)) if int(i / FPS * SR) < len(a) else 0 for i in range(n)])
-            e = e / (np.percentile(e[e > 0], 95) + 1e-9)
-            self.open[s["key"]] = np.convolve(np.clip((e - 0.08) / 0.8, 0, 1), [0.25, 0.5, 0.25], mode="same")
+            self.open[s["key"]] = mouth_curve(self.A[s["key"]], FPS, SR)
         self.caps = []
         for i, s in enumerate(segs):
             if s.get("caption", True):
