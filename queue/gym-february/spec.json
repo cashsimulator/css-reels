@@ -1,0 +1,24 @@
+{
+ "id": "gym-february",
+ "title": "Same members. Same city. Different February.",
+ "cast": {
+  "marcus": {"voice": "am_liam", "desc": "gym owner, stressed, 60-day corporate deal"},
+  "tess":   {"voice": "af_nicole", "desc": "gym owner, calm, ran the scenario"}
+ },
+ "cover_char": "tess", "cover_image": "img/tess.png",
+ "cover_text": ["Same members.", "Different", "February."],
+ "mood_flip": "k8",
+ "segments": [
+  {"key":"k1","speaker":"marcus","text":"Packed gym. Best month ever.","show":{"type":"face","image":"img/marcus.png","who":"marcus"},"label":["same members.","same city."],"label_size":56,"label_y":250,"hud":["MARCUS","PROFIT ##########","CASH   #######..."]},
+  {"key":"k2","speaker":"tess","text":"Same here.","show":{"type":"face","image":"img/tess.png","who":"tess"},"hud":["TESS","PROFIT ##########","CASH   #######..."]},
+  {"key":"k3","speaker":"marcus","text":"Signed a corporate deal. They pay in sixty days.","show":{"type":"face","image":"img/marcus.png","who":"marcus"},"hud":["MARCUS","PROFIT ##########","CASH   ####......"]},
+  {"key":"k4","speaker":"tess","text":"Mine pay in thirty.","show":{"type":"face","image":"img/tess.png","who":"tess"},"hud":["TESS","PROFIT ##########","CASH   ########.."]},
+  {"key":"k5","speaker":"marcus","text":"Rent's due. Payroll's due. Where's the money?","show":{"type":"broll","image":"img/marcus_night.png"},"label":["february"],"label_y":300,"hud":["MARCUS","PROFIT ##########","CASH   .........."]},
+  {"key":"k6","speaker":"cfo","text":"Sixty-day terms. Minus fourteen thousand in February.","show":{"type":"app","screen":"feb_chart"},"label":["marcus"],"label_color":"orange","label_y":330},
+  {"key":"k7","speaker":"cfo","text":"Thirty-day terms. Still thirty-three thousand in the bank.","show":{"type":"app","screen":"safe_chart"},"label":["tess"],"label_color":"teal","label_y":330,"beat":true},
+  {"key":"k8","speaker":"marcus","text":"Tess. How are you so calm?","show":{"type":"broll","image":"img/tess_gym.png"}},
+  {"key":"k9","speaker":"tess","text":"I ran the scenario.","show":{"type":"face","image":"img/tess.png","who":"tess"},"beat":true}
+ ],
+ "caption": "same members. same city. different february.\n\nMarcus signed a big corporate deal that pays in 60 days. Tess kept her clients on 30. Same profit on paper. Only one of them could pay rent in February.\n\nAre you a Marcus or a Tess? 👇\n\nCash Scenario Simulator lets you test payment terms before you sign them. Private beta is open. DM me BETA for a code.\n\n#gymowner #smallbusiness #cashflow #fitnessbusiness #entrepreneur #smallbusinessowner #founder #businesstips",
+ "first_comment": "Big contracts feel like a win until you see when the money actually arrives. Run the terms before you sign. DM me BETA to test yours."
+}

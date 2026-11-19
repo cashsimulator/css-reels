@@ -1,0 +1,64 @@
+1
+00:00:00,050 --> 00:00:00,650
+Packed gym
+
+2
+00:00:00,650 --> 00:00:01,688
+Best month ever
+
+3
+00:00:01,708 --> 00:00:02,568
+Same here
+
+4
+00:00:02,588 --> 00:00:03,759
+Signed a corporate deal
+
+5
+00:00:03,759 --> 00:00:05,065
+They pay in sixty days
+
+6
+00:00:05,085 --> 00:00:06,393
+Mine pay in thirty
+
+7
+00:00:06,413 --> 00:00:06,896
+Rent's due
+
+8
+00:00:06,896 --> 00:00:07,512
+Payroll's due
+
+9
+00:00:07,512 --> 00:00:08,465
+Where's the money?
+
+10
+00:00:08,485 --> 00:00:09,595
+Sixty-day terms
+
+11
+00:00:09,595 --> 00:00:11,900
+Minus fourteen thousand in February
+
+12
+00:00:11,920 --> 00:00:12,970
+Thirty-day terms
+
+13
+00:00:12,970 --> 00:00:15,281
+Still thirty-three thousand in the bank
+
+14
+00:00:15,301 --> 00:00:15,556
+Tess
+
+15
+00:00:15,556 --> 00:00:16,788
+How are you so calm?
+
+16
+00:00:16,808 --> 00:00:18,412
+I ran the scenario
+
