@@ -389,7 +389,7 @@ class Reel:
             m = np.frombuffer(m, np.float32)
             if len(m) < n: m = np.tile(m, n // max(1, len(m)) + 1)
             m = m[:n] / (np.max(np.abs(m[:n])) + 1e-9)
-            bed = (m * 0.16 * np.clip(tt / 0.15, 0, 1)).astype(np.float32)        # instant start, no slow fade-in
+            bed = (m * 0.11 * np.clip(tt / 0.15, 0, 1)).astype(np.float32)        # instant start, no slow fade-in
         venv = np.convolve(np.abs(vo), np.ones(int(0.12 * SR)) / int(0.12 * SR), mode="same")
         mix = vo + bed * (1 - 0.55 * np.clip(venv / 0.03, 0, 1)).astype(np.float32) * 0.42 * np.clip((self.TOTAL - tt) / 0.8, 0, 1).astype(np.float32)
         d = f"{V3}/{self.name}/out"; os.makedirs(d, exist_ok=True)
