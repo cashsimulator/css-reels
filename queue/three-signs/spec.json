@@ -1,0 +1,122 @@
+{
+ "id": "three-signs",
+ "title": "3 signs you're about to run out of cash",
+ "pixel": true,
+ "cover_char": "cfo",
+ "cover_text": [
+  "3 signs you're",
+  "about to run",
+  "out of cash"
+ ],
+ "mood_flip": "k8",
+ "segments": [
+  {
+   "key": "k1",
+   "speaker": "cfo",
+   "text": "Three signs your business is about to run out of cash. Even while it's making money.",
+   "show": {
+    "type": "cfo"
+   },
+   "label": [
+    "3 signs"
+   ],
+   "label_y": 300
+  },
+  {
+   "key": "k2",
+   "speaker": "cfo",
+   "text": "One. You pay suppliers in thirty days, but clients pay you in sixty.",
+   "show": {
+    "type": "broll",
+    "scene": "suppliers"
+   },
+   "label": [
+    "1. suppliers",
+    "first"
+   ],
+   "label_y": 300,
+   "caption": true
+  },
+  {
+   "key": "k3",
+   "speaker": "cfo",
+   "text": "You're basically lending them money.",
+   "show": {
+    "type": "app",
+    "screen": "terms_60"
+   }
+  },
+  {
+   "key": "k4",
+   "speaker": "cfo",
+   "text": "Two. Payroll and rent leave in the same week.",
+   "show": {
+    "type": "broll",
+    "scene": "payroll"
+   },
+   "label": [
+    "2. payroll",
+    "+ rent"
+   ],
+   "label_y": 300
+  },
+  {
+   "key": "k5",
+   "speaker": "cfo",
+   "text": "Your month-end looks fine. The worst day hides in the middle of the month.",
+   "show": {
+    "type": "app",
+    "screen": "weekly"
+   }
+  },
+  {
+   "key": "k6",
+   "speaker": "cfo",
+   "text": "Three. One client brings in most of your sales.",
+   "show": {
+    "type": "broll",
+    "scene": "client_leaves"
+   },
+   "label": [
+    "3. one big",
+    "client"
+   ],
+   "label_y": 300
+  },
+  {
+   "key": "k7",
+   "speaker": "cfo",
+   "text": "If they leave, your cushion is gone.",
+   "show": {
+    "type": "broll",
+    "scene": "late_clients"
+   }
+  },
+  {
+   "key": "k8",
+   "speaker": "cfo",
+   "text": "Cash Scenario Simulator: put in your numbers, and it shows the exact week your cash goes red, before it happens.",
+   "show": {
+    "type": "app",
+    "screen": "danger_head"
+   },
+   "hud": [
+    {
+     "text": "CASH SCENARIO SIMULATOR",
+     "color": "yellow"
+    }
+   ]
+  },
+  {
+   "key": "k9",
+   "speaker": "cfo",
+   "text": "It's in private beta. DM me BETA for a code.",
+   "show": {
+    "type": "cfo"
+   },
+   "beat": true
+  }
+ ],
+ "caption": "Profitable doesn't mean safe. These 3 drain cash quietly, even when sales look good.\n\n1. You pay suppliers before your clients pay you\n2. Payroll and rent land in the same week\n3. One client is most of your revenue\n\nWhich one is you? 👇\n\nCash Scenario Simulator shows the exact week your cash goes red, before it happens. Private beta is open. DM me BETA for a code.\n\n#smallbusiness #cashflow #entrepreneur #founder #businesstips #smallbusinessowner #saas",
+ "first_comment": "Sign 2 is the one month-end reports hide. Check your worst week, not your month-end. DM me BETA to see yours."
+}

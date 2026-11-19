@@ -1,26 +1,209 @@
 {
  "id": "record-quarter",
  "title": "Record profit. Zero cash.",
- "pixel": true, "pixel_factor": 4,
+ "pixel": true,
+ "pixel_factor": 4,
  "cast": {
-  "ceo":       {"voice": "am_onyx",  "desc": "the CEO, record quarter, no cash"},
-  "assistant": {"voice": "af_sarah", "desc": "assistant, off camera"},
-  "dev":       {"voice": "am_liam",  "desc": "junior analyst, calm, ran the scenario"}
+  "ceo": {
+   "voice": "am_onyx",
+   "desc": "the CEO, record quarter, no cash"
+  },
+  "assistant": {
+   "voice": "af_sarah",
+   "desc": "assistant, off camera"
+  },
+  "dev": {
+   "voice": "am_liam",
+   "desc": "junior analyst, calm, ran the scenario"
+  }
  },
- "cover_char": "ceo", "cover_image": "img/exec_shock.png",
- "cover_text": ["Record profit.", "Zero cash."],
- "mood_flip": "k8",
+ "cover_char": "ceo",
+ "cover_image": "img/exec_shock.png",
+ "cover_text": [
+  "Record profit.",
+  "Zero cash."
+ ],
+ "mood_flip": "k11",
  "segments": [
-  {"key":"k1","speaker":"ceo","text":"Record quarter. Time to celebrate.","show":{"type":"broll","image":"img/desk.jpg"},"hud":["CEO","TRY 1/3","PROFIT ##########"],"label":["pov: record profit,","zero cash"],"label_size":52,"label_y":330},
-  {"key":"k2","speaker":"assistant","text":"Sir, payroll bounced.","show":{"type":"broll","image":"img/computer.jpg"},"hud":["CEO","TRY 1/3",{"text":"FAILED","color":"red"}]},
-  {"key":"k3","speaker":"ceo","text":"We made the news!","show":{"type":"broll","image":"img/paper.jpg"},"hud":["CEO","TRY 2/3","CASH   #####....."]},
-  {"key":"k4","speaker":"assistant","text":"Supplier wants cash upfront.","show":{"type":"broll","image":"img/hallway.jpg"},"hud":["CEO","TRY 2/3",{"text":"FAILED","color":"red"}]},
-  {"key":"k5","speaker":"ceo","text":"Finally. Ten minutes for myself.","show":{"type":"broll","image":"img/window.jpg"},"hud":["CEO","TRY 3/3","CASH   ##........"]},
-  {"key":"k6","speaker":"assistant","text":"Sir! The bank is calling!","show":{"type":"broll","image":"img/exec_shock.png"},"hud":["CEO","TRY 3/3",{"text":"FAILED","color":"red"},"CASH   .........."],"beat":true},
-  {"key":"k7","speaker":"ceo","text":"How are you always so calm?","show":{"type":"broll","image":"img/board.png"}},
-  {"key":"k8","speaker":"dev","text":"I ran the scenario.","show":{"type":"broll","image":"img/analyst.png"},"hud":["ANALYST","CASH   ##########"],"beat":true},
-  {"key":"k9","speaker":"dev","text":"Below zero on February twenty-sixth. I told you in October.","show":{"type":"app","screen":"weekly"}},
-  {"key":"k10","speaker":"ceo","text":"Send me the code.","show":{"type":"broll","image":"img/exec_shock.png"},"beat":true}
+  {
+   "key": "k1",
+   "speaker": "ceo",
+   "text": "Record quarter. Time to celebrate.",
+   "show": {
+    "type": "broll",
+    "image": "img/desk.jpg"
+   },
+   "hud": [
+    "CEO",
+    "TRY 1/3",
+    "PROFIT ##########"
+   ],
+   "label": [
+    "pov: record profit,",
+    "zero cash"
+   ],
+   "label_size": 52,
+   "label_y": 330
+  },
+  {
+   "key": "k2",
+   "speaker": "assistant",
+   "text": "Sir, payroll bounced.",
+   "show": {
+    "type": "broll",
+    "image": "img/computer.jpg"
+   },
+   "hud": [
+    "CEO",
+    "TRY 1/3",
+    {
+     "text": "FAILED",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "key": "k3",
+   "speaker": "ceo",
+   "text": "We made the news!",
+   "show": {
+    "type": "broll",
+    "image": "img/paper.jpg"
+   },
+   "hud": [
+    "CEO",
+    "TRY 2/3",
+    "CASH   #####....."
+   ]
+  },
+  {
+   "key": "k4",
+   "speaker": "assistant",
+   "text": "Supplier wants cash upfront.",
+   "show": {
+    "type": "broll",
+    "image": "img/hallway.jpg"
+   },
+   "hud": [
+    "CEO",
+    "TRY 2/3",
+    {
+     "text": "FAILED",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "key": "k5",
+   "speaker": "ceo",
+   "text": "Finally. Ten minutes for myself.",
+   "show": {
+    "type": "broll",
+    "image": "img/window.jpg"
+   },
+   "hud": [
+    "CEO",
+    "TRY 3/3",
+    "CASH   ##........"
+   ]
+  },
+  {
+   "key": "k6",
+   "speaker": "assistant",
+   "text": "Sir! The bank is calling!",
+   "show": {
+    "type": "broll",
+    "image": "img/exec_shock.png"
+   },
+   "hud": [
+    "CEO",
+    "TRY 3/3",
+    {
+     "text": "FAILED",
+     "color": "red"
+    },
+    "CASH   .........."
+   ],
+   "beat": true
+  },
+  {
+   "key": "k7",
+   "speaker": "ceo",
+   "text": "How are you always so calm?",
+   "show": {
+    "type": "broll",
+    "image": "img/board.png"
+   }
+  },
+  {
+   "key": "k8",
+   "speaker": "dev",
+   "text": "I ran the scenario before we celebrated.",
+   "show": {
+    "type": "broll",
+    "image": "img/analyst.png"
+   },
+   "hud": [
+    "ANALYST",
+    "CASH   ##########"
+   ],
+   "beat": true
+  },
+  {
+   "key": "k9",
+   "speaker": "dev",
+   "text": "Our clients pay in sixty days. I put that into Cash Scenario Simulator.",
+   "show": {
+    "type": "app",
+    "screen": "terms_60"
+   },
+   "hud": [
+    {
+     "text": "CASH SCENARIO SIMULATOR",
+     "color": "yellow"
+    }
+   ]
+  },
+  {
+   "key": "k10",
+   "speaker": "dev",
+   "text": "Below zero on February twenty-sixth. The week payroll leaves.",
+   "show": {
+    "type": "app",
+    "screen": "weekly"
+   },
+   "hud": [
+    {
+     "text": "SCENARIO: PAID IN 60",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "key": "k11",
+   "speaker": "dev",
+   "text": "If they pay in thirty days, we're safe all year.",
+   "show": {
+    "type": "app",
+    "screen": "safe_chart"
+   },
+   "hud": [
+    {
+     "text": "SCENARIO: PAID IN 30",
+     "color": "green"
+    }
+   ]
+  },
+  {
+   "key": "k12",
+   "speaker": "ceo",
+   "text": "Send me the code.",
+   "show": {
+    "type": "broll",
+    "image": "img/exec_shock.png"
+   },
+   "beat": true
+  }
  ],
  "caption": "record profit. zero cash. the bank still called.\n\nProfit is what the spreadsheet says. Cash is what's in the account on the day payroll leaves. They are not the same day.\n\nWhich one would you have called first? 👇\n\nCash Scenario Simulator shows the exact week your cash goes red, before it happens. Private beta is open. DM me BETA for a code.\n\n#ceo #smallbusiness #cashflow #entrepreneur #businesshumor #founder #smallbusinessowner #startup",
  "first_comment": "A record quarter on paper can still mean an empty account if clients pay in 60 days and payroll leaves every 2 weeks. DM me BETA to see your own February."

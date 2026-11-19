@@ -1,0 +1,158 @@
+{
+ "id": "black-friday-stock",
+ "title": "Black Friday stock-up",
+ "pixel": true,
+ "cast": {
+  "baker": {
+   "voice": "bm_lewis",
+   "desc": "bakery owner"
+  },
+  "salon": {
+   "voice": "af_sarah",
+   "desc": "salon owner next door"
+  }
+ },
+ "cover_char": "baker",
+ "cover_image": "img/baker_man_ps2.jpg",
+ "cover_text": [
+  "Holiday rush.",
+  "Empty bank."
+ ],
+ "mood_flip": "k7",
+ "segments": [
+  {
+   "key": "k1",
+   "speaker": "baker",
+   "text": "Black Friday week. Stocking up for the rush.",
+   "show": {
+    "type": "broll",
+    "image": "img/bakery_shop_ps2.jpg"
+   },
+   "label": [
+    "pov: black friday",
+    "stock-up"
+   ],
+   "label_size": 56,
+   "label_y": 300,
+   "hud": [
+    "BAKERY",
+    "STOCK ##########",
+    "CASH  ####......"
+   ]
+  },
+  {
+   "key": "k2",
+   "speaker": "salon",
+   "text": "All paid upfront?",
+   "show": {
+    "type": "broll",
+    "image": "img/salon_owner_ps2.jpg"
+   }
+  },
+  {
+   "key": "k3",
+   "speaker": "baker",
+   "text": "Of course. The sales come in December.",
+   "show": {
+    "type": "broll",
+    "image": "img/baker_man_ps2.jpg"
+   },
+   "hud": [
+    "BAKERY",
+    "CASH  ##........"
+   ]
+  },
+  {
+   "key": "k4",
+   "speaker": "salon",
+   "text": "And rent? Payroll? Your January bills?",
+   "show": {
+    "type": "broll",
+    "image": "img/salon_ps2.jpg"
+   }
+  },
+  {
+   "key": "k5",
+   "speaker": "baker",
+   "text": "It'll work out. It always does.",
+   "show": {
+    "type": "broll",
+    "image": "img/baker_man_ps2.jpg"
+   },
+   "hud": [
+    "BAKERY",
+    {
+     "text": "CASH  ..........",
+     "color": "red"
+    }
+   ],
+   "beat": true
+  },
+  {
+   "key": "k6",
+   "speaker": "salon",
+   "text": "I ran the scenario on my salon last year. Cash Scenario Simulator.",
+   "show": {
+    "type": "broll",
+    "image": "img/salon_owner_ps2.jpg"
+   }
+  },
+  {
+   "key": "k7",
+   "speaker": "salon",
+   "text": "You put in what you spend, and when the money actually arrives.",
+   "show": {
+    "type": "app",
+    "screen": "terms_60"
+   },
+   "hud": [
+    {
+     "text": "CASH SCENARIO SIMULATOR",
+     "color": "yellow"
+    }
+   ]
+  },
+  {
+   "key": "k8",
+   "speaker": "salon",
+   "text": "It shows the exact week you hit zero. Mine was February.",
+   "show": {
+    "type": "app",
+    "screen": "feb_chart"
+   },
+   "hud": [
+    {
+     "text": "THE RED WEEK",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "key": "k9",
+   "speaker": "salon",
+   "text": "Change one date, and test it again.",
+   "show": {
+    "type": "app",
+    "screen": "safe_chart"
+   },
+   "hud": [
+    {
+     "text": "FIXED",
+     "color": "green"
+    }
+   ]
+  },
+  {
+   "key": "k10",
+   "speaker": "baker",
+   "text": "Okay. Send me the code.",
+   "show": {
+    "type": "broll",
+    "image": "img/baker_man_ps2.jpg"
+   },
+   "beat": true
+  }
+ ],
+ "caption": "stocked up for black friday. paid upfront. the sales come in december. the bills come in january.\n\nBusy seasons drain cash before they fill it. The rush is real, the gap after it is too.\n\nDo you pay suppliers before your busy season? 👇\n\nCash Scenario Simulator shows the exact week your cash hits zero, so you can change a date before it happens. Private beta is open. DM me BETA for a code.\n\n#blackfriday #smallbusiness #cashflow #bakery #salonowner #entrepreneur #smallbusinessowner #founder",
+ "first_comment": "Before a big stock-up, check the weeks after the rush, not just the rush. DM me BETA to see your own red week."
+}

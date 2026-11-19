@@ -1,0 +1,88 @@
+1
+00:00:00,050 --> 00:00:01,100
+Black Friday week
+
+2
+00:00:01,100 --> 00:00:02,540
+Stocking up for the rush
+
+3
+00:00:02,560 --> 00:00:03,840
+All paid upfront?
+
+4
+00:00:03,860 --> 00:00:04,490
+Of course
+
+5
+00:00:04,490 --> 00:00:06,096
+The sales come in December
+
+6
+00:00:06,116 --> 00:00:06,626
+And rent?
+
+7
+00:00:06,626 --> 00:00:07,176
+Payroll?
+
+8
+00:00:07,176 --> 00:00:08,402
+Your January bills?
+
+9
+00:00:08,422 --> 00:00:09,272
+It'll work out
+
+10
+00:00:09,272 --> 00:00:10,657
+It always does
+
+11
+00:00:10,677 --> 00:00:11,631
+I ran the scenario
+
+12
+00:00:11,631 --> 00:00:12,867
+on my salon last year
+
+13
+00:00:12,867 --> 00:00:14,404
+Cash Scenario Simulator
+
+14
+00:00:14,424 --> 00:00:15,534
+You put in what you spend
+
+15
+00:00:15,534 --> 00:00:17,322
+and when the money actually arrives
+
+16
+00:00:17,342 --> 00:00:18,234
+It shows the exact
+
+17
+00:00:18,234 --> 00:00:19,192
+week you hit zero
+
+18
+00:00:19,192 --> 00:00:20,447
+Mine was February
+
+19
+00:00:20,467 --> 00:00:21,327
+Change one date
+
+20
+00:00:21,327 --> 00:00:23,047
+and test it again
+
+21
+00:00:23,067 --> 00:00:23,353
+Okay
+
+22
+00:00:23,353 --> 00:00:24,870
+Send me the code
+

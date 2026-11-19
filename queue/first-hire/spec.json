@@ -1,0 +1,148 @@
+{
+ "id": "first-hire",
+ "title": "POV: you just hired your first employee",
+ "pixel": true,
+ "cast": {
+  "maya": {
+   "voice": "af_heart",
+   "desc": "design studio founder"
+  },
+  "ben": {
+   "voice": "am_puck",
+   "desc": "first employee"
+  }
+ },
+ "cover_char": "maya",
+ "cover_image": "img/maya.png",
+ "cover_text": [
+  "POV: you hired",
+  "your first",
+  "employee"
+ ],
+ "mood_flip": "k8",
+ "segments": [
+  {
+   "key": "k1",
+   "speaker": "maya",
+   "text": "I just hired my first employee!",
+   "show": {
+    "type": "broll",
+    "image": "img/maya.png"
+   },
+   "label": [
+    "pov: your first",
+    "hire"
+   ],
+   "label_size": 56,
+   "label_y": 300,
+   "hud": [
+    "MAYA",
+    "STUDIO LVL 2",
+    "CASH #########."
+   ]
+  },
+  {
+   "key": "k2",
+   "speaker": "ben",
+   "text": "Happy to be here, boss.",
+   "show": {
+    "type": "broll",
+    "image": "img/mx_hire.png"
+   }
+  },
+  {
+   "key": "k3",
+   "speaker": "maya",
+   "text": "Payroll every two weeks. Easy.",
+   "show": {
+    "type": "broll",
+    "image": "img/mx_payroll.png"
+   },
+   "hud": [
+    "PAYDAY 1",
+    "CASH #######..."
+   ]
+  },
+  {
+   "key": "k4",
+   "speaker": "maya",
+   "text": "Clients pay in sixty days. Also easy.",
+   "show": {
+    "type": "broll",
+    "image": "img/mx_payroll.png"
+   },
+   "hud": [
+    "PAYDAY 2",
+    "CASH ####......"
+   ]
+  },
+  {
+   "key": "k5",
+   "speaker": "maya",
+   "text": "Week six. Why is the bank app red?",
+   "show": {
+    "type": "broll",
+    "image": "img/mx_night.png"
+   },
+   "hud": [
+    "WEEK 6",
+    {
+     "text": "CASH ..........",
+     "color": "red"
+    }
+   ],
+   "beat": true
+  },
+  {
+   "key": "k6",
+   "speaker": "maya",
+   "text": "Okay. Let me actually check.",
+   "show": {
+    "type": "broll",
+    "image": "img/maya.png"
+   }
+  },
+  {
+   "key": "k7",
+   "speaker": "maya",
+   "text": "I put my payroll and client terms into Cash Scenario Simulator.",
+   "show": {
+    "type": "app",
+    "screen": "terms_60"
+   },
+   "hud": [
+    {
+     "text": "CASH SCENARIO SIMULATOR",
+     "color": "yellow"
+    }
+   ]
+  },
+  {
+   "key": "k8",
+   "speaker": "maya",
+   "text": "Payroll goes out every two weeks. The money comes in every sixty days. That's the gap.",
+   "show": {
+    "type": "app",
+    "screen": "weekly"
+   },
+   "hud": [
+    {
+     "text": "THE GAP",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "key": "k9",
+   "speaker": "maya",
+   "text": "Next hire, I run the scenario first.",
+   "show": {
+    "type": "broll",
+    "image": "img/maya.png"
+   },
+   "beat": true
+  }
+ ],
+ "caption": "hired my first employee. week six: the bank app turned red.\n\nPayroll leaves every two weeks. Clients pay in sixty days. The plan looked fine month by month, it just never showed the weeks in between.\n\nHow many weeks of payroll could you cover right now? 👇\n\nCash Scenario Simulator maps your cash week by week, payday by payday, before you hire. Private beta is open. DM me BETA for a code.\n\n#firsthire #smallbusiness #cashflow #founder #entrepreneur #startup #designstudio #smallbusinessowner",
+ "first_comment": "Before a hire, check the worst week, not the month-end. That's where payroll and slow clients collide. DM me BETA to test yours."
+}

@@ -1,0 +1,72 @@
+1
+00:00:00,050 --> 00:00:01,879
+I just hired my first employee
+
+2
+00:00:01,899 --> 00:00:02,665
+Happy to be here
+
+3
+00:00:02,665 --> 00:00:03,179
+boss
+
+4
+00:00:03,199 --> 00:00:04,539
+Payroll every two weeks
+
+5
+00:00:04,539 --> 00:00:05,175
+Easy
+
+6
+00:00:05,195 --> 00:00:06,675
+Clients pay in sixty days
+
+7
+00:00:06,675 --> 00:00:07,635
+Also easy
+
+8
+00:00:07,655 --> 00:00:08,315
+Week six
+
+9
+00:00:08,315 --> 00:00:09,929
+Why is the bank app red?
+
+10
+00:00:09,949 --> 00:00:10,215
+Okay
+
+11
+00:00:10,215 --> 00:00:11,677
+Let me actually check
+
+12
+00:00:11,697 --> 00:00:13,271
+I put my payroll and client
+
+13
+00:00:13,271 --> 00:00:15,458
+terms into Cash Scenario Simulator
+
+14
+00:00:15,478 --> 00:00:17,208
+Payroll goes out every two weeks
+
+15
+00:00:17,208 --> 00:00:19,148
+The money comes in every sixty days
+
+16
+00:00:19,148 --> 00:00:19,996
+That's the gap
+
+17
+00:00:20,016 --> 00:00:20,696
+Next hire
+
+18
+00:00:20,696 --> 00:00:22,484
+I run the scenario first
+
