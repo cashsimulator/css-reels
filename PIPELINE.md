@@ -68,6 +68,8 @@ Never post anything that is not a `ready` item from this queue. Never post twice
 - `show.type`: `cfo`, `face` (char + optional `zoom` 1.0 to 1.3), `broll` (scene), `app` (screen).
 - `label`: optional pixel-font word(s) at the top. Colors: white, yellow, red, green, orange, teal.
 - `caption: false` on a segment hides subtitles for it (use when a label already says the same words).
+- Look: game-style pixel subtitles (VT323), one colour per speaker (cfo white, owner orange, baker pink, maya blue). Optional `"hud"` on a segment: top-left game HUD lines, e.g. `["RICK", "PROFIT ##########", "CASH   ##........"]` ('#' full cell, '.' empty). Use the HUD to show cash draining across segments.
+- Music: the owner's track `assets/music/bed.mp3` (kept local, not in the public repo) starting at 0:35, ducked under the voice. Without it the engine falls back to the built-in beat.
 - Pace: voices run at about 1.2x (CSS_VOICE_SPEED, default 1.22) and pauses inside a line are squeezed to ~0.1 s. Gaps between segments are capped at 0.12 s. Add `"beat": true` to at most one or two segments for a deliberate 0.35 s pause (before a punchline or reveal). Do not set long gaps.
 
 ## Content rules (the owner's style; follow them)

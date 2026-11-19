@@ -4,6 +4,7 @@ import sys, os, json, shutil
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from scenes import *
 
+SPEAKER_COLORS = {"cfo": (255, 255, 255), "owner": (255, 170, 60), "baker": (255, 150, 200), "maya": (120, 220, 255)}
 COLORS = {"white": (255, 255, 255), "yellow": (255, 229, 0), "red": (255, 90, 80), "green": (90, 230, 120), "orange": (255, 160, 80), "teal": (120, 230, 220)}
 
 def vis_for(show, speaker):
@@ -24,7 +25,9 @@ def build(spec_path):
     for s in spec["segments"]:
         v, talking, gr = vis_for(s["show"], s["speaker"])
         seg = dict(key=s["key"], voice=CHARACTERS[s["speaker"]]["voice"], text=s["text"], speed=s.get("speed", 1.0),
-                   vis=v, speaker=talking, grade=gr, gap=s.get("gap", 0.1), beat=s.get("beat", False), caption=s.get("caption", True))
+                   vis=v, speaker=talking, grade=gr, gap=s.get("gap", 0.1), beat=s.get("beat", False), caption=s.get("caption", True),
+                   cap_color=SPEAKER_COLORS.get(s["speaker"], (255, 255, 255)))
+        if s.get("hud"): seg["hud"] = s["hud"]
         if s.get("label"):
             seg["label"] = s["label"]; seg["label_y"] = s.get("label_y", 320); seg["label_color"] = COLORS.get(s.get("label_color", "white"), (255, 255, 255))
         segs.append(seg)
