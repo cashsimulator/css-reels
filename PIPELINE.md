@@ -70,12 +70,22 @@ Never post anything that is not a `ready` item from this queue. Never post twice
 - `caption: false` on a segment hides subtitles for it (use when a label already says the same words).
 - Look: game-style pixel subtitles (VT323), one colour per speaker (cfo white, owner orange, baker pink, maya blue). Optional `"hud"` on a segment: top-left game HUD lines, e.g. `["RICK", "PROFIT ##########", "CASH   ##........"]` ('#' full cell, '.' empty). Use the HUD to show cash draining across segments.
 - Music: the owner's track `assets/music/bed.mp3` (kept local, not in the public repo) starting at 0:35, ducked under the voice. Without it the engine falls back to the built-in beat.
-- Pace: voices run at about 1.2x (CSS_VOICE_SPEED, default 1.22) and pauses inside a line are squeezed to ~0.1 s. Gaps between segments are capped at 0.12 s. Add `"beat": true` to at most one or two segments for a deliberate 0.35 s pause (before a punchline or reveal). Do not set long gaps.
+- Pace: voices run at about 1.1x (CSS_VOICE_SPEED, default 1.12) and pauses inside a line are squeezed to ~0.1 s. Gaps between segments are about 0.2 s. Add `"beat": true` to a few segments for a deliberate 0.45 s pause (before a punchline or reveal). Do not set long gaps.
 
 ## Look and talking (owner feedback, Nov 19)
 - Every shot is pixelated PS2-style (`"pixel": true`, the default; app screens stay sharp). Smooth "AI 3D" frames look sloppy, so never turn it off.
 - No fake mouth movement: the jaw-flap looked out of sync. Who is talking is shown by the speaker's subtitle colour and by cutting to the speaker or to the listener's reaction, like the competitor. Only set `"lip_flap": true` if real lip-sync is added later.
 - Follow the competitor teardown structure (SERIES.md): HUD that frames the scene as a game (e.g. "CEO / TRY 1/3 / FAILED"), rule of three, the question, "I ran the scenario", app screen as proof, conversion line, end card.
+
+## Clarity before speed (owner feedback, Nov 19)
+- Never jump straight to "I ran the scenario". Viewers do not know the app yet. Always bridge in 3 to 4 beats:
+  1. the character decides to check ("let me check something"),
+  2. names the app and what they put in ("I put his terms into Cash Scenario Simulator. He pays in sixty days."),
+  3. the app screen shows the problem in plain words ("my cash goes below zero in February"),
+  4. the fix on a second screen ("same work, paid in thirty days... safe all year"), then the decision and the punchline.
+- App screens are held at least 2.6 s, other shots at least 1.3 s (`min_dur` can override). Gaps between lines are about 0.2 s; a `beat` is 0.45 s.
+- Target 25 to 35 s. A clear 30 s video beats a confusing 17 s one.
+- New videos are drafts: build them, send them to the owner in chat, and set status "draft". Only schedule a post after the owner approves it and gives a time.
 
 ## Variety (the owner's top rule)
 Every video gets a NEW cast and a NEW setting, like the competitor series: different people, a different comparison, a new arena (work, family, friends, gym, bank, date, holidays...). Do not reuse the same characters or the same b-roll set in two videos in a row. The CFO is optional (a cameo or the closing line), not the star of every video.

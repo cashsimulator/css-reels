@@ -33,7 +33,7 @@ def build(spec_path):
         v, talking, gr = vis_for(s["show"], s["speaker"])
         talking = talking and spec.get("lip_flap", False)      # no fake mouth flapping unless asked: subtitles carry who speaks
         seg = dict(key=s["key"], voice=CHARACTERS[s["speaker"]]["voice"], text=s["text"], speed=s.get("speed", 1.0),
-                   vis=v, speaker=talking, grade=gr, pixel=(s["show"]["type"] != "app" and spec.get("pixel", True)), pixel_factor=spec.get("pixel_factor", 4), gap=s.get("gap", 0.1), beat=s.get("beat", False), caption=s.get("caption", True),
+                   vis=v, speaker=talking, grade=gr, pixel=(s["show"]["type"] != "app" and spec.get("pixel", True)), pixel_factor=spec.get("pixel_factor", 4), gap=s.get("gap", 0.2), beat=s.get("beat", False), min_dur=s.get("min_dur", 2.6 if s["show"]["type"] == "app" else 1.3), caption=s.get("caption", True),
                    cap_color=SPEAKER_COLORS.get(s["speaker"]) or PALETTE[list(spec.get("cast", {})).index(s["speaker"]) % len(PALETTE)] if s["speaker"] in spec.get("cast", {}) else SPEAKER_COLORS.get(s["speaker"], (255, 255, 255)))
         if s.get("hud"): seg["hud"] = s["hud"]
         if s.get("label"):

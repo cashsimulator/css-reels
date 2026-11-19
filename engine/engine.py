@@ -338,7 +338,8 @@ class Reel:
         self.A = tts(name, segs)
         t = 0.05; self.T = {}
         for s in segs:
-            s["gap"] = 0.35 if s.get("beat") else min(s.get("gap", 0.1), 0.12)
+            s["gap"] = 0.45 if s.get("beat") else min(s.get("gap", 0.2), 0.22)
+            s["gap"] = max(s["gap"], s.get("min_dur", 0) - len(self.A[s["key"]]) / SR)   # let screens breathe
             self.T[s["key"]] = t; t += len(self.A[s["key"]]) / SR + s["gap"]
         self.END = t; self.TOTAL = t + tail; self.N = int(round(self.TOTAL * FPS))
         self.mood_flip = self.T[mood_flip] if mood_flip else None

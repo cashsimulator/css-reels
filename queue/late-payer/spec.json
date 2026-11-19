@@ -1,24 +1,211 @@
 {
  "id": "late-payer",
  "title": "Boss fight: the client who pays next week",
- "pixel": true, "pixel_factor": 4,
+ "pixel": true,
+ "pixel_factor": 4,
  "cast": {
-  "sam":    {"voice": "am_eric",   "desc": "freelance designer"},
-  "client": {"voice": "bm_george", "desc": "the late-paying client, final boss"}
+  "sam": {
+   "voice": "am_eric",
+   "desc": "freelance designer"
+  },
+  "client": {
+   "voice": "bm_george",
+   "desc": "the late-paying client, final boss"
+  }
  },
- "cover_char": "sam", "cover_image": "img/boss.png",
- "cover_text": ["Boss fight:", "the late payer"],
- "mood_flip": "k7",
+ "cover_char": "sam",
+ "cover_image": "img/boss.png",
+ "cover_text": [
+  "Boss fight:",
+  "the late payer"
+ ],
+ "mood_flip": "k9",
  "segments": [
-  {"key":"k1","speaker":"client","text":"Great work, Sam. Payment next week.","show":{"type":"broll","image":"img/client_phone.png","focus":0.5},"label":["pov: the client who","pays 'next week'"],"label_size":48,"label_y":300,"hud":["ROUND 1","SAM CASH ########.."]},
-  {"key":"k2","speaker":"sam","text":"Rent is due Friday.","show":{"type":"broll","image":"img/sam_night.png","focus":0.5},"hud":["ROUND 1","SAM CASH ######...."]},
-  {"key":"k3","speaker":"client","text":"Finance is slow. Next week.","show":{"type":"broll","image":"img/client_desk.png","focus":0.55},"hud":["ROUND 2","SAM CASH ###......."]},
-  {"key":"k4","speaker":"sam","text":"That's what you said last week.","show":{"type":"broll","image":"img/sam.png","focus":0.45},"hud":["ROUND 2","SAM CASH ##........"]},
-  {"key":"k5","speaker":"client","text":"Next week. Promise.","show":{"type":"broll","image":"img/boss.png","focus":0.55},"label":["final boss"],"label_color":"red","label_y":330,"hud":["ROUND 3",{"text":"BOSS: THE LATE PAYER","color":"red"},"SAM CASH .........."],"beat":true},
-  {"key":"k6","speaker":"sam","text":"Okay. New rule.","show":{"type":"broll","image":"img/sam_lobby.png","focus":0.42}},
-  {"key":"k7","speaker":"sam","text":"I ran the scenario. Thirty-day terms, or no deal.","show":{"type":"app","screen":"terms_30"},"hud":[{"text":"POWER-UP","color":"yellow"}]},
-  {"key":"k8","speaker":"sam","text":"Safe all year.","show":{"type":"app","screen":"safe_chart"},"hud":["SAM CASH ##########"]},
-  {"key":"k9","speaker":"client","text":"Fine. Thirty days.","show":{"type":"broll","image":"img/client_phone.png","focus":0.5},"hud":[{"text":"BOSS DEFEATED","color":"green"}],"beat":true}
+  {
+   "key": "k1",
+   "speaker": "client",
+   "text": "Great work, Sam. Payment next week.",
+   "show": {
+    "type": "broll",
+    "image": "img/client_phone.png",
+    "focus": 0.5
+   },
+   "label": [
+    "pov: the client who",
+    "pays 'next week'"
+   ],
+   "label_size": 48,
+   "label_y": 300,
+   "hud": [
+    "ROUND 1",
+    "SAM CASH ########.."
+   ]
+  },
+  {
+   "key": "k2",
+   "speaker": "sam",
+   "text": "Rent is due Friday.",
+   "show": {
+    "type": "broll",
+    "image": "img/sam_night.png",
+    "focus": 0.5
+   },
+   "hud": [
+    "ROUND 1",
+    "SAM CASH ######...."
+   ]
+  },
+  {
+   "key": "k3",
+   "speaker": "client",
+   "text": "Finance is slow. Next week.",
+   "show": {
+    "type": "broll",
+    "image": "img/client_desk.png",
+    "focus": 0.55
+   },
+   "hud": [
+    "ROUND 2",
+    "SAM CASH ###......."
+   ]
+  },
+  {
+   "key": "k4",
+   "speaker": "sam",
+   "text": "That's what you said last week.",
+   "show": {
+    "type": "broll",
+    "image": "img/sam.png",
+    "focus": 0.45
+   },
+   "hud": [
+    "ROUND 2",
+    "SAM CASH ##........"
+   ]
+  },
+  {
+   "key": "k5",
+   "speaker": "client",
+   "text": "Next week. Promise.",
+   "show": {
+    "type": "broll",
+    "image": "img/boss.png",
+    "focus": 0.55
+   },
+   "label": [
+    "final boss"
+   ],
+   "label_color": "red",
+   "label_y": 330,
+   "hud": [
+    "ROUND 3",
+    {
+     "text": "BOSS: THE LATE PAYER",
+     "color": "red"
+    },
+    "SAM CASH .........."
+   ],
+   "beat": true
+  },
+  {
+   "key": "k6",
+   "speaker": "sam",
+   "text": "Okay. Before I lose my apartment, let me check something.",
+   "show": {
+    "type": "broll",
+    "image": "img/sam_night.png"
+   },
+   "hud": [
+    "SAM CASH .........."
+   ]
+  },
+  {
+   "key": "k7",
+   "speaker": "sam",
+   "text": "I put his terms into Cash Scenario Simulator. He pays in sixty days.",
+   "show": {
+    "type": "app",
+    "screen": "terms_60"
+   },
+   "hud": [
+    {
+     "text": "CASH SCENARIO SIMULATOR",
+     "color": "yellow"
+    }
+   ]
+  },
+  {
+   "key": "k8",
+   "speaker": "sam",
+   "text": "And there it is. My cash goes below zero in February.",
+   "show": {
+    "type": "app",
+    "screen": "feb_chart"
+   },
+   "hud": [
+    {
+     "text": "SCENARIO: PAID IN 60",
+     "color": "red"
+    }
+   ]
+  },
+  {
+   "key": "k9",
+   "speaker": "sam",
+   "text": "Same work, but paid in thirty days?",
+   "show": {
+    "type": "app",
+    "screen": "terms_30"
+   },
+   "hud": [
+    {
+     "text": "SCENARIO: PAID IN 30",
+     "color": "yellow"
+    }
+   ]
+  },
+  {
+   "key": "k10",
+   "speaker": "sam",
+   "text": "Safe all year.",
+   "show": {
+    "type": "app",
+    "screen": "safe_chart"
+   },
+   "hud": [
+    {
+     "text": "POWER-UP",
+     "color": "green"
+    },
+    "SAM CASH ##########"
+   ],
+   "beat": true
+  },
+  {
+   "key": "k11",
+   "speaker": "sam",
+   "text": "New rule. Thirty days, or no deal.",
+   "show": {
+    "type": "broll",
+    "image": "img/sam.png"
+   }
+  },
+  {
+   "key": "k12",
+   "speaker": "client",
+   "text": "Fine. Thirty days.",
+   "show": {
+    "type": "broll",
+    "image": "img/client_phone.png"
+   },
+   "hud": [
+    {
+     "text": "BOSS DEFEATED",
+     "color": "green"
+    }
+   ],
+   "beat": true
+  }
  ],
  "caption": "\"payment next week\" is not a payment date.\n\nEvery freelancer has fought this boss. Rent doesn't wait for next week, and neither does your card bill.\n\nWhat's the longest you've waited on a \"next week\"? 👇\n\nCash Scenario Simulator shows what late payers do to your cash before you agree to the terms. Private beta is open. DM me BETA for a code.\n\n#freelancer #freelancelife #smallbusiness #cashflow #latepayments #entrepreneur #designer #founder",
  "first_comment": "Put the payment date in the contract, not the email. 30 days with a clear due date beats 'next week' every time. DM me BETA to test your terms."
