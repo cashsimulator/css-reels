@@ -17,7 +17,7 @@ def vis_for(show, speaker):
         F = face_auto(_img(show["image"])) if show.get("image") else face(show["char"]); z = show.get("zoom", 1.0)
         return (lambda tl, o: F.framed(o, z)), speaker == show.get("char", show.get("who")), True
     if t == "broll":
-        S = broll_auto(_img(show["image"])) if show.get("image") else broll(show["scene"]); return (lambda tl, o: S.frame(tl)), False, True
+        S = broll_auto(_img(show["image"]), show.get("zoom", 1.0), show.get("focus", 0.5)) if show.get("image") else broll(show["scene"]); return (lambda tl, o: S.frame(tl)), False, True
     if t == "app":
         img = app(show["screen"]); return (lambda tl, o: img.copy()), False, False
     raise ValueError(f"unknown show type {t}")
@@ -35,7 +35,7 @@ def build(spec_path):
                    cap_color=SPEAKER_COLORS.get(s["speaker"]) or PALETTE[list(spec.get("cast", {})).index(s["speaker"]) % len(PALETTE)] if s["speaker"] in spec.get("cast", {}) else SPEAKER_COLORS.get(s["speaker"], (255, 255, 255)))
         if s.get("hud"): seg["hud"] = s["hud"]
         if s.get("label"):
-            seg["label"] = s["label"]; seg["label_y"] = s.get("label_y", 320); seg["label_color"] = COLORS.get(s.get("label_color", "white"), (255, 255, 255))
+            seg["label"] = s["label"]; seg["label_y"] = s.get("label_y", 320); seg["label_size"] = s.get("label_size", 92); seg["label_color"] = COLORS.get(s.get("label_color", "white"), (255, 255, 255))
         segs.append(seg)
     reel = Reel(spec["id"], segs, mood_flip=spec.get("mood_flip"))
     return spec, d, reel

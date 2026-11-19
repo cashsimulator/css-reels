@@ -86,11 +86,17 @@ def app(name):
     return _AP[name]
 
 # ---------- new faces and scenes per video (any image, no hand setup) ----------
-def _to_916(path):
+def _to_916(path, zoom=1.0, focus=0.5):
     """load any image, centre-crop to 9:16, save as 864x1536 png next to it; returns new path"""
-    out = os.path.splitext(path)[0] + "_916.png"
+    out = os.path.splitext(path)[0] + f"_916_{zoom:.2f}_{focus:.2f}.png"
     if os.path.exists(out): return out
     im = cv2.imread(path); h, w = im.shape[:2]; tw = int(h * 9 / 16)
+    if w > h * 1.05:                                   # wide scene: keep all of it, centred on a blurred copy of itself
+        fw = int(864 * zoom); fg = cv2.resize(im, (fw, int(h * fw / w)), interpolation=cv2.INTER_LANCZOS4)
+        x0 = int(np.clip(focus * fw - 432, 0, fw - 864)); fg = fg[:, x0:x0 + 864][:1536]
+        bg = cv2.resize(cv2.GaussianBlur(cv2.resize(im, (64, 64)), (0, 0), 2), (864, 1536))
+        bg = (bg * 0.5).astype(np.uint8); y0 = (1536 - fg.shape[0]) // 2; bg[y0:y0 + fg.shape[0]] = fg
+        cv2.imwrite(out, bg); return out
     if tw <= w: x0 = (w - tw) // 2; im = im[:, x0:x0 + tw]
     else: th = int(w * 16 / 9); y0 = max(0, (h - th) // 3); im = im[y0:y0 + th]
     cv2.imwrite(out, cv2.resize(im, (864, 1536), interpolation=cv2.INTER_LANCZOS4)); return out
@@ -102,7 +108,7 @@ def find_mouth(path916):
     det = [d for d in det if d[1] + d[3] / 2 < 1536 * 0.62] or list(det)
     if not len(det): raise ValueError(f"no face found in {path916}: use it as b-roll, or pick a front-facing portrait")
     x, y, w, h = max(det, key=lambda d: d[2])
-    return (int(x + w / 2), int(y + h * 0.78)), int(w * 0.15)
+    return (int(x + w / 2), int(y + h * 0.84)), int(w * 0.15)
 
 _auto_faces = {}
 def face_auto(path):
@@ -112,14 +118,15 @@ def face_auto(path):
     return _auto_faces[path]
 
 _auto_broll = {}
-def broll_auto(path):
+def broll_auto(path, zoom=1.0, focus=0.5):
     """gentle life for any still: people breathe, the brightest lights flicker, film grain. No camera moves."""
-    if path not in _auto_broll:
-        p = _to_916(path); S = BA.Scene(p)
+    key = (path, zoom, focus)
+    if key not in _auto_broll:
+        p = _to_916(path, zoom, focus); S = BA.Scene(p)
         S.breathe((0, 250, 432, 1500), 0.005, 0.33); S.breathe((432, 250, 864, 1500), 0.005, 0.29, 0.5)
         g = cv2.GaussianBlur(cv2.cvtColor(cv2.imread(p), cv2.COLOR_BGR2GRAY), (0, 0), 25)
         for i in range(2):
             _, _, _, (x, y) = cv2.minMaxLoc(g); S.light(x, y, 120, 0.12, i + 11)
             cv2.circle(g, (x, y), 220, 0, -1)
-        _auto_broll[path] = S
-    return _auto_broll[path]
+        _auto_broll[key] = S
+    return _auto_broll[key]

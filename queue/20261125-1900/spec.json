@@ -1,0 +1,27 @@
+{
+ "id": "20261125-1900",
+ "title": "Thanksgiving: that one cousin who plays with spreadsheets",
+ "cast": {
+  "nora": {"voice": "af_bella", "desc": "calm niece, ran the scenario"},
+  "rick": {"voice": "am_eric", "desc": "Uncle Rick, best year ever"},
+  "aunt": {"voice": "af_sarah", "desc": "aunt at the table"},
+  "kid":  {"voice": "af_nicole", "desc": "the kid"}
+ },
+ "cover_char": "nora", "cover_image": "img/nora.png",
+ "cover_text": ["I ran the", "scenario."],
+ "mood_flip": "k7",
+ "segments": [
+  {"key":"k1","speaker":"aunt","text":"So Nora, still playing with spreadsheets?","show":{"type":"broll","image":"img/table.png","zoom":1.7,"focus":0.45},"label":["pov: that one cousin","who plays with","spreadsheets"],"label_size":42,"label_y":260},
+  {"key":"k2","speaker":"rick","text":"Some of us run real businesses.","show":{"type":"face","image":"img/rick.png","who":"rick"},"hud":["UNCLE RICK","PROFIT ##########","CASH   ######...."]},
+  {"key":"k3","speaker":"rick","text":"Best year ever. Three new clients.","show":{"type":"face","image":"img/rick.png","who":"rick"},"hud":["UNCLE RICK","PROFIT ##########","CASH   ####......"]},
+  {"key":"k4","speaker":"nora","text":"I ran the scenario.","show":{"type":"face","image":"img/nora.png","who":"nora"},"beat":true},
+  {"key":"k5","speaker":"rick","text":"Scenarios don't pay bills, Nora.","show":{"type":"face","image":"img/rick.png","who":"rick"},"hud":["UNCLE RICK","PROFIT ##########","CASH   ###......."]},
+  {"key":"k6","speaker":"nora","text":"No. But they told me something.","show":{"type":"broll","image":"img/phone_app.png"}},
+  {"key":"k7","speaker":"nora","text":"You're below zero on February twenty-sixth.","show":{"type":"app","screen":"weekly"},"hud":["FEB 26","CASH   .........."]},
+  {"key":"k8","speaker":"nora","text":"See you in February, Rick.","show":{"type":"face","image":"img/nora.png","who":"nora"},"beat":true},
+  {"key":"k9","speaker":"rick","text":"Wait. What?","show":{"type":"broll","image":"img/walkoff.png","zoom":1.6,"focus":0.33},"beat":true},
+  {"key":"k10","speaker":"kid","text":"Mom, I want to run scenarios.","show":{"type":"broll","image":"img/kid.png"}}
+ ],
+ "caption": "best year ever, he said. february said otherwise.\n\nEvery family has an Uncle Rick. Big sales, three new clients, zero idea when the cash actually lands.\n\nTag your Uncle Rick 👇\n\nCash Scenario Simulator shows the exact week your cash goes red, before it happens. Private beta is open. DM me BETA for a code.\n\n#thanksgiving #smallbusiness #cashflow #entrepreneur #businesshumor #smallbusinessowner #founder #familydinner",
+ "first_comment": "New clients usually mean more payroll and supplies before their first payment arrives. That gap is where February goes red. DM me BETA to check yours."
+}
