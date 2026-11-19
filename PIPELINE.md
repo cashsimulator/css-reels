@@ -72,6 +72,11 @@ Never post anything that is not a `ready` item from this queue. Never post twice
 - Music: the owner's track `assets/music/bed.mp3` (kept local, not in the public repo) starting at 0:35, ducked under the voice. Without it the engine falls back to the built-in beat.
 - Pace: voices run at about 1.2x (CSS_VOICE_SPEED, default 1.22) and pauses inside a line are squeezed to ~0.1 s. Gaps between segments are capped at 0.12 s. Add `"beat": true` to at most one or two segments for a deliberate 0.35 s pause (before a punchline or reveal). Do not set long gaps.
 
+## Look and talking (owner feedback, Nov 19)
+- Every shot is pixelated PS2-style (`"pixel": true`, the default; app screens stay sharp). Smooth "AI 3D" frames look sloppy, so never turn it off.
+- No fake mouth movement: the jaw-flap looked out of sync. Who is talking is shown by the speaker's subtitle colour and by cutting to the speaker or to the listener's reaction, like the competitor. Only set `"lip_flap": true` if real lip-sync is added later.
+- Follow the competitor teardown structure (SERIES.md): HUD that frames the scene as a game (e.g. "CEO / TRY 1/3 / FAILED"), rule of three, the question, "I ran the scenario", app screen as proof, conversion line, end card.
+
 ## Variety (the owner's top rule)
 Every video gets a NEW cast and a NEW setting, like the competitor series: different people, a different comparison, a new arena (work, family, friends, gym, bank, date, holidays...). Do not reuse the same characters or the same b-roll set in two videos in a row. The CFO is optional (a cameo or the closing line), not the star of every video.
 - Put the video's own images in `queue/<id>/img/` and declare its people in the spec:

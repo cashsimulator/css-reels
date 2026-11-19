@@ -1,0 +1,60 @@
+1
+00:00:00,050 --> 00:00:00,901
+Record quarter
+
+2
+00:00:00,901 --> 00:00:02,096
+Time to celebrate
+
+3
+00:00:02,116 --> 00:00:02,330
+Sir
+
+4
+00:00:02,330 --> 00:00:03,330
+payroll bounced
+
+5
+00:00:03,350 --> 00:00:04,477
+We made the news
+
+6
+00:00:04,497 --> 00:00:06,088
+Supplier wants cash upfront
+
+7
+00:00:06,108 --> 00:00:06,519
+Finally
+
+8
+00:00:06,519 --> 00:00:07,884
+Ten minutes for myself
+
+9
+00:00:07,904 --> 00:00:08,088
+Sir
+
+10
+00:00:08,088 --> 00:00:09,428
+The bank is calling
+
+11
+00:00:09,448 --> 00:00:11,062
+How are you always so calm?
+
+12
+00:00:11,082 --> 00:00:12,634
+I ran the scenario
+
+13
+00:00:12,654 --> 00:00:14,724
+Below zero on February twenty-sixth
+
+14
+00:00:14,724 --> 00:00:15,978
+I told you in October
+
+15
+00:00:15,998 --> 00:00:17,330
+Send me the code
+

@@ -66,6 +66,11 @@ def tts(name, lines):
 SCAN = np.ones((H, 1, 1), np.float32); SCAN[::3] = 0.93
 _yy, _xx = np.mgrid[0:H, 0:W].astype(np.float32)
 VIG = (1 - 0.38 * np.clip(np.sqrt(((_xx - W / 2) / (W / 2)) ** 2 + ((_yy - H / 2) / (H / 2)) ** 2) - 0.45, 0, 1) ** 1.4)[..., None].astype(np.float32)
+def pixelate(f, factor=4, levels=28):
+    """PS2 / pixel look: chunky pixels and a slightly reduced palette"""
+    h, w = f.shape[:2]; sm = cv2.resize(f, (w // factor, h // factor), interpolation=cv2.INTER_AREA)
+    q = 256 // levels; sm = np.clip(sm.astype(np.int32) // q * q + q // 2, 0, 255).astype(np.uint8)
+    return cv2.resize(sm, (w, h), interpolation=cv2.INTER_NEAREST)
 def grade(f): return np.clip(f.astype(np.float32) * VIG * SCAN, 0, 255).astype(np.uint8)
 
 # ---------------- talking faces ----------------
@@ -361,6 +366,7 @@ class Reel:
         s = self.seg_at(t) or self.segs[0]; k = s["key"]; tl = t - self.T[k]
         op = self.open[k]; o = op[int(tl * FPS)] if s.get("speaker") and int(tl * FPS) < len(op) else 0.0
         base = s["vis"](tl, o)
+        if s.get("pixel"): base = pixelate(base, s.get("pixel_factor", 4))
         if s.get("grade", True): base = grade(base)
         f = base.copy()
         if k in self.labels: paste(f, self.labels[k], W / 2, s.get("label_y", 880) + (190 if k in self.huds and s.get("label_y", 880) < 500 else 0), min(1.0, tl / 0.08))

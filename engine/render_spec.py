@@ -3,6 +3,7 @@ Outputs next to the spec: video.mp4, video_clean.mp4, cover.jpg, captions.srt, s
 import sys, os, json, shutil
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from scenes import *
+from scenes import _to_916
 
 SPEAKER_COLORS = {"cfo": (255, 255, 255), "owner": (255, 170, 60), "baker": (255, 150, 200), "maya": (120, 220, 255)}
 PALETTE = [(255, 170, 60), (120, 220, 255), (255, 150, 200), (150, 240, 130), (255, 229, 0), (200, 160, 255)]
@@ -30,8 +31,9 @@ def build(spec_path):
     segs = []
     for s in spec["segments"]:
         v, talking, gr = vis_for(s["show"], s["speaker"])
+        talking = talking and spec.get("lip_flap", False)      # no fake mouth flapping unless asked: subtitles carry who speaks
         seg = dict(key=s["key"], voice=CHARACTERS[s["speaker"]]["voice"], text=s["text"], speed=s.get("speed", 1.0),
-                   vis=v, speaker=talking, grade=gr, gap=s.get("gap", 0.1), beat=s.get("beat", False), caption=s.get("caption", True),
+                   vis=v, speaker=talking, grade=gr, pixel=(s["show"]["type"] != "app" and spec.get("pixel", True)), pixel_factor=spec.get("pixel_factor", 4), gap=s.get("gap", 0.1), beat=s.get("beat", False), caption=s.get("caption", True),
                    cap_color=SPEAKER_COLORS.get(s["speaker"]) or PALETTE[list(spec.get("cast", {})).index(s["speaker"]) % len(PALETTE)] if s["speaker"] in spec.get("cast", {}) else SPEAKER_COLORS.get(s["speaker"], (255, 255, 255)))
         if s.get("hud"): seg["hud"] = s["hud"]
         if s.get("label"):
@@ -51,7 +53,8 @@ if __name__ == "__main__":
                         "-bufsize", "12M", "-pix_fmt", "yuv420p", "-c:a", "copy", "-movflags", "+faststart", dst], check=True)
     shutil.copy(f"{out}/{reel.name}.srt", f"{d}/captions.srt")
     ch = spec.get("cover_char", "cfo")
-    base = grade(cfo(0)) if ch == "cfo" else grade(face_auto(_img(spec["cover_image"])).framed(0)) if spec.get("cover_image") else grade(face(ch).framed(0))
+    base = grade(cfo(0)) if ch == "cfo" else grade(cv2.resize(cv2.imread(_to_916(_img(spec["cover_image"]))), (W, H), interpolation=cv2.INTER_LANCZOS4)) if spec.get("cover_image") else grade(face(ch).framed(0))
+    if spec.get("pixel", True): base = pixelate(base, spec.get("pixel_factor", 4))
     cover(base, spec["cover_text"], f"{d}/cover.png", y=spec.get("cover_y", 1480))
     Image.open(f"{d}/cover.png").convert("RGB").save(f"{d}/cover.jpg", quality=90); os.remove(f"{d}/cover.png")
     shutil.copy(reel.sheet(), f"{d}/sheet.jpg")
